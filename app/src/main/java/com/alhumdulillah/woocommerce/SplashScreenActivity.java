@@ -18,7 +18,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         SystemClock.sleep(5000);
-        Intent loginIntent = new Intent(SplashScreenActivity.this,LoginActivity.class);
+        Intent loginIntent = new Intent(SplashScreenActivity.this,RegisterActivity.class);
         startActivity(loginIntent);
         finish();
     }
