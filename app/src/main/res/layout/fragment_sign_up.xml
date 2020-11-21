@@ -125,7 +125,7 @@
             android:background="@drawable/slider_background"
             android:enabled="false"
             android:text="Sign up"
-            android:textColor="#50ffff"
+            android:textColor="#50ffffff"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

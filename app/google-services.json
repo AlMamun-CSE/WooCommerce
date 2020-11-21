@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1010088628521",
+    "firebase_url": "https://woocommerces-b75da.firebaseio.com",
+    "project_id": "woocommerces-b75da",
+    "storage_bucket": "woocommerces-b75da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010088628521:android:12b712790e296da81ca738",
+        "android_client_info": {
+          "package_name": "com.alhumdulillah.woocommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010088628521-h2i5lf4o3a4gc33el4t2qgkcqa94t173.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5nMsq2RWjh0MOXMH34sOeeDmAt1rkVUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010088628521-h2i5lf4o3a4gc33el4t2qgkcqa94t173.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
