@@ -2,6 +2,7 @@ package com.alhumdulillah.woocommerce.Fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignUpFragment extends Fragment {
@@ -37,6 +43,7 @@ public class SignUpFragment extends Fragment {
 
     //Firebase Var
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFireStore;
 
 
     //Another Var
@@ -78,7 +85,9 @@ public class SignUpFragment extends Fragment {
         signUpProgressBar = view.findViewById(R.id.signUpProgressBarId);
 
 
+        //Initialize firebase Object
         mAuth = FirebaseAuth.getInstance();
+        mFireStore = FirebaseFirestore.getInstance();
 
 
         return view;
@@ -89,15 +98,6 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //Set All Weiget Action
-        alReadyHaveAnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Set Up Fragment
-                setFragment(new SignInFragment());
-            }
-        });
 
         //Set Up Listener
         signUpUserEmail.addTextChangedListener(new TextWatcher() {
@@ -175,6 +175,13 @@ public class SignUpFragment extends Fragment {
                 CheckEmailAndPassword();
             }
         });
+        alReadyHaveAnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Set Up Fragment
+                setFragment(new SignInFragment());
+            }
+        });
 
     }
 
@@ -225,6 +232,11 @@ public class SignUpFragment extends Fragment {
      * Check Email And Password Valid and Invalid
      */
     private void CheckEmailAndPassword() {
+
+        //Create Drawable
+        Drawable customErrorIcon = getResources().getDrawable(R.mipmap.custom_error_icon);
+        customErrorIcon.setBounds(0,0,customErrorIcon.getIntrinsicWidth(),customErrorIcon.getIntrinsicHeight());
+
         if (signUpUserEmail.getText().toString().matches(mValidEmailPattern)){
             if (signUpUserPassword.getText().toString().equals(signUpUserConfirmPassword.getText().toString())){
 
@@ -240,11 +252,36 @@ public class SignUpFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
-                                    //Go To Main Activity
-                                    Intent mainIntent = new Intent(getActivity(), MainActivity.class);
-                                    startActivity(mainIntent);
-                                    getActivity().finish();
 
+                                    //Store data with Firebase FireStore,So
+                                    //First Time Store data Map(Key Value Pair)
+                                    Map<Object,String> username = new HashMap<>();
+                                    username.put("fullname",signUpUserName.getText().toString());
+
+
+                                    //Firebase FireStore Store Data
+                                    mFireStore.collection("USERS")
+                                            //add data
+                                            .add(username)
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                    if (task.isSuccessful()){
+                                                        //Go To Main Activity
+                                                        Intent mainIntent = new Intent(getActivity(), MainActivity.class);
+                                                        startActivity(mainIntent);
+                                                        getActivity().finish();
+                                                    }else {
+                                                        //visible sign up button
+                                                        signUpBtn.setEnabled(true);
+                                                        signUpBtn.setTextColor(Color.rgb(255,255,255));
+                                                        //Invisible progress bar
+                                                        signUpProgressBar.setVisibility(View.INVISIBLE);
+                                                        String error = task.getException().getMessage();
+                                                        Toast.makeText(getActivity(),error,Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            });
                                 }else {
                                     //visible sign up button
                                     signUpBtn.setEnabled(true);
@@ -258,10 +295,10 @@ public class SignUpFragment extends Fragment {
                         });
             }
             else {
-                signUpUserPassword.setError("Password doesn't matched!");
+                signUpUserPassword.setError("Password doesn't matched!",customErrorIcon);
             }
         }else {
-            signUpUserEmail.setError("Invalid Email!");
+            signUpUserEmail.setError("Invalid Email!",customErrorIcon);
         }
 
     }

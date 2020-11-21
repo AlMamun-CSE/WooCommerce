@@ -10,6 +10,7 @@ android {
         applicationId "com.alhumdulillah.woocommerce"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -44,9 +45,12 @@ dependencies {
 
     // Import Firebase Auth
     implementation 'com.google.firebase:firebase-auth'
+    //Import Firebase FireStore
+    implementation 'com.google.firebase:firebase-firestore:22.0.0'
 
+    implementation 'com.android.support:multidex:1.0.3'
 
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
