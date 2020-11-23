@@ -31,6 +31,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import static com.alhumdulillah.woocommerce.RegisterActivity.forgetPasswordFragment;
+
 public class SignInFragment extends Fragment {
     private static final String TAG = "SignInFragment";
 
@@ -146,6 +148,7 @@ public class SignInFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Set UP ForgetFragment
+                forgetPasswordFragment = true;
                 setFragment(new ResetPasswordFragment());
             }
         });

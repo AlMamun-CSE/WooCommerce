@@ -72,7 +72,8 @@ public class ResetPasswordFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: started.");
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_reset_password, container, false);
+        View view = inflater.inflate(R
+                .layout.fragment_reset_password, container, false);
 
 
         //define----------------------------------------------------------------------
