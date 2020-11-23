@@ -49,7 +49,7 @@ public class SignUpFragment extends Fragment {
     //Another Var
     private String mValidEmailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
-    //private Var
+    //private Weigets Var
     private TextView alReadyHaveAnAccount;
     private FrameLayout parentFrameLayout;
     private EditText signUpUserEmail,signUpUserName,signUpUserPassword,signUpUserConfirmPassword;
@@ -182,6 +182,15 @@ public class SignUpFragment extends Fragment {
                 setFragment(new SignInFragment());
             }
         });
+        signUpCrossBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Go to Main Activity
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
 
     }
 
@@ -202,10 +211,10 @@ public class SignUpFragment extends Fragment {
      * Check User Input Empty And Not Empty
      */
     private void checkInputs() {
-        if (!TextUtils.isEmpty(signUpUserEmail.getText())){
-            if (!TextUtils.isEmpty(signUpUserName.getText())){
-                if (!TextUtils.isEmpty(signUpUserPassword.getText()) && signUpUserPassword.length() >=8){
-                    if (!TextUtils.isEmpty(signUpUserConfirmPassword.getText())){
+        if (!TextUtils.isEmpty(signUpUserEmail.getText().toString().trim())){
+            if (!TextUtils.isEmpty(signUpUserName.getText().toString().trim())){
+                if (!TextUtils.isEmpty(signUpUserPassword.getText().toString().trim()) && signUpUserPassword.length() >=8){
+                    if (!TextUtils.isEmpty(signUpUserConfirmPassword.getText().toString().trim())){
                         signUpBtn.setEnabled(true);
                         signUpBtn.setTextColor(Color.rgb(255,255,255));
                     }else {
@@ -237,8 +246,8 @@ public class SignUpFragment extends Fragment {
         Drawable customErrorIcon = getResources().getDrawable(R.mipmap.custom_error_icon);
         customErrorIcon.setBounds(0,0,customErrorIcon.getIntrinsicWidth(),customErrorIcon.getIntrinsicHeight());
 
-        if (signUpUserEmail.getText().toString().matches(mValidEmailPattern)){
-            if (signUpUserPassword.getText().toString().equals(signUpUserConfirmPassword.getText().toString())){
+        if (signUpUserEmail.getText().toString().trim().matches(mValidEmailPattern)){
+            if (signUpUserPassword.getText().toString().trim().equals(signUpUserConfirmPassword.getText().toString())){
 
                 //Visible progress
                 signUpProgressBar.setVisibility(View.VISIBLE);
@@ -247,7 +256,7 @@ public class SignUpFragment extends Fragment {
                 signUpBtn.setTextColor(Color.argb(50,255,255,255));
 
                 //create firebase user account with email and password
-                mAuth.createUserWithEmailAndPassword(signUpUserEmail.getText().toString(),signUpUserPassword.getText().toString())
+                mAuth.createUserWithEmailAndPassword(signUpUserEmail.getText().toString().trim(),signUpUserPassword.getText().toString().trim())
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -256,7 +265,7 @@ public class SignUpFragment extends Fragment {
                                     //Store data with Firebase FireStore,So
                                     //First Time Store data Map(Key Value Pair)
                                     Map<Object,String> username = new HashMap<>();
-                                    username.put("fullname",signUpUserName.getText().toString());
+                                    username.put("fullname",signUpUserName.getText().toString().trim());
 
 
                                     //Firebase FireStore Store Data

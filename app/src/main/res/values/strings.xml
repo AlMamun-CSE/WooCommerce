@@ -3,4 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in">Sign in</string>
+    <string name="check_your_inbox_after_clicking_the_button_above">check your inbox after clicking the button above</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="recovery_email_sent_successful_check_your_inbox">Recovery email sent successful! check your inbox.</string>
+    <string name="provide_your_registered_email_here">Provide your registered email here</string>
+    <string name="don_t_worry_we_have_just_need_your_n_registered_email_address_and_it_s_done">Don\'t worry we have just need your\n registered email address and it\'s done!</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>
