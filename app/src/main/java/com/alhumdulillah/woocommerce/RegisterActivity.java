@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    //Back Stack for Code
+    // Click Back Stack button and run this Code
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

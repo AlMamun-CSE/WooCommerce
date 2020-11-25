@@ -9,4 +9,19 @@
     <string name="provide_your_registered_email_here">Provide your registered email here</string>
     <string name="don_t_worry_we_have_just_need_your_n_registered_email_address_and_it_s_done">Don\'t worry we have just need your\n registered email address and it\'s done!</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_orders">My Orders</string>
+    <string name="menu_reward">My Rewards</string>
+    <string name="menu_cart">My Cart</string>
+    <string name="menu_wishList">My WishList</string>
+    <string name="menu_account">My Account</string>
+    <string name="menu_signOut">Sign Out</string>
 </resources>

@@ -30,4 +30,13 @@
         <item name="colorOnPrimary">@color/purple_500</item>
     </style>
 
+    <style name="Theme.WooCommerce.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WooCommerce.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WooCommerce.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

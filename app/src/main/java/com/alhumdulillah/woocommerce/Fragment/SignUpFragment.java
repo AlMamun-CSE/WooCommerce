@@ -186,7 +186,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Go to Main Activity
-                Intent intent = new Intent(getActivity(),MainActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }
