@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordFragment extends Fragment {
+    //Final Var
     private static final String TAG = "ResetPasswordFragment";
 
     //Firebase Var
@@ -118,6 +119,7 @@ public class ResetPasswordFragment extends Fragment {
 
             }
         });
+        //button click
         forgetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
